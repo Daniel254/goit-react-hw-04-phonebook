@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import * as yup from 'yup';
 
 import Section from 'components/Section';
-import { Button, Error, Input, LabelName } from './NewContactForm.styled';
+import { Button, Error, Input, LabelName } from './ContactForm.styled';
 
-function NewContactForm({ addContact }) {
+function ContactForm({ addContact }) {
   const schema = yup.object().shape({
     name: yup
       .string()
@@ -70,8 +70,8 @@ function NewContactForm({ addContact }) {
   );
 }
 
-NewContactForm.propTypes = {
+ContactForm.propTypes = {
   addContact: PropTypes.func.isRequired,
 };
 
-export default NewContactForm;
+export default ContactForm;

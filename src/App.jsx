@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
 import Box from 'components/Box';
+import ContactForm from 'components/ContactForm';
 import ContactList from 'components/ContactList';
 import Container from 'components/Container';
-import NewContactForm from 'components/NewContactForm';
 import SearchContact from 'components/SearchContact';
 import Section from 'components/Section';
 
@@ -41,11 +41,11 @@ export function App() {
     if (checkExistingContactName(newContact)) {
       throw new Error(`${newContact.name} is already in contacts`);
     }
-    setContacts(prev => [newContact, ...prev]);
+    setContacts([newContact, ...contacts]);
   };
 
   const deleteContactHandler = id => {
-    setContacts(prev => prev.filter(contact => contact.id !== id));
+    setContacts(contacts.filter(contact => contact.id !== id));
   };
   return (
     <>
@@ -54,7 +54,7 @@ export function App() {
         <Box as="h1" mx="auto">
           Phonebook
         </Box>
-        <NewContactForm addContact={addContactHandler} />
+        <ContactForm addContact={addContactHandler} />
         <Section mt="10px">
           <Box as="h2">Contacts</Box>
           <SearchContact filterHandler={filterHandler} filterString={filter} />
